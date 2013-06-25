@@ -132,7 +132,7 @@ TODO
 
 ## Properties
 
- *  `defaultColumns`: Name of default columns in main table, indexed by attribute name.
+ *  `fallbackColumns`: Name of default columns in main table, indexed by attribute name.
     If no translation is found in the translation table, then the value from this column
     in the main table is used. Example: `array('name'=>'defaultName')`.
  *  `languageColumn`: Name of the column which contains the language code in the
