@@ -4,7 +4,7 @@
  *
  * Transparent attribute translation for ActiveRecords.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author Michael Härtl <haertl.mike@gmail.com>
  */
 class Translatable extends CActiveRecordBehavior
@@ -12,7 +12,7 @@ class Translatable extends CActiveRecordBehavior
     /**
      * @var string name of relation to the translation table. Default is 'translation'.
      */
-    public $translationRelation = 'translation';
+    public $translationRelation = 'translations';
 
     /**
      * @var string name of language column in translation table. Default is 'language'.

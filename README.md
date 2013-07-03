@@ -169,6 +169,10 @@ The development of this extension was kindly sponsored by
 
 # Changelog
 
-### 0.9.0
+### 1.0.1
+
+*   Change default for `translationRelation` to `translations`.
+
+### 1.0.0
 
 *   Initial release
