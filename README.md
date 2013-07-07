@@ -52,6 +52,8 @@ it to `translatable`.
 
 # How to use
 
+**1. Move translateable columns into a separate table**
+
 The behavior requires that you move all columns that you want to translate
 from the original table into a dedicated translation table. So if you have
 a table `books` and want to translate `title` and `abstract`, you need to
@@ -72,9 +74,9 @@ modify yourd DB schema a little:
     +--------------+
 ```
 
-With a setup like this you can now attach the behavior to the `Books` ActiveRecord.
-You also have to create a record for the translation table (e.g. `BookTranslations`)
-and define a `HAS_MANY` relationship for it in the `Books` model.
+**2. Attach the behavior to your ActiveRecord model**
+
+With the above DB setup you can now attach the behavior to the `Books` ActiveRecord.
 
 ```php
 <?php
@@ -92,7 +94,15 @@ public function behaviors()
         ),
     );
 }
+```
 
+**3. Define a relation from your main record to your translation record**
+
+You also have to create a record for the translation table (e.g. `BookTranslations`)
+and define a `HAS_MANY` relationship for it in the `Books` model.
+
+```php
+<?php
 public function relations()
 {
     return array(
@@ -101,6 +111,8 @@ public function relations()
     );
 }
 ```
+
+**4. Create validation rules in your main record**
 
 You will also want to create some rules for these attributes in the `Books` record.
 

@@ -4,7 +4,7 @@
  *
  * Transparent attribute translation for ActiveRecords.
  *
- * @version 1.0.1
+ * @version 1.1.0-dev
  * @author Michael Härtl <haertl.mike@gmail.com>
  */
 class Translatable extends CActiveRecordBehavior
@@ -163,7 +163,7 @@ class Translatable extends CActiveRecordBehavior
     }
 
     /**
-     * Named scope to query for load multiple language records
+     * Named scope to query for multiple language records
      *
      * @param mixed $languages an array of language codes or null for all languages
      */
