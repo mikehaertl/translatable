@@ -25,7 +25,7 @@ class Translatable extends CActiveRecordBehavior
     public $translationAttributes = array();
 
     /**
-     * @var array default columns in main table, indexed by attribute name. Used if not translation found.
+     * @var array default columns in main table, indexed by attribute name. Used if no translation found.
      */
     public $fallbackColumns = array();
 
