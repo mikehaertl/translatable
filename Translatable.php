@@ -247,6 +247,9 @@ class Translatable extends CActiveRecordBehavior
             if(!$this->owner->isNewRecord)
             {
                 $translations = $this->owner->getRelated($this->translationRelation);
+                if (isset($translations[0])) {
+                    throw new CException("Translatable has detected a numeric index on '{$this->translationRelation}', relation must be defined with an index on '{$this->languageColumn}'.");
+                }
                 if(isset($translations[$language]))
                     $this->_tModels[$language] = $translations[$language];
             }
