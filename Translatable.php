@@ -30,9 +30,9 @@ class Translatable extends CActiveRecordBehavior
     public $fallbackColumns = array();
     
     /**
-     * @var boolean wheter the behavior should return translated attributes (default) or use the fallback
+     * @var boolean whether to suppress the automatic creation of a translation model if none exists yet. Fallback columns will still work. Default is false.
      */
-    public $muted = false;
+    public $disableTranslationModel = false;
 
     /**
      * @var string the currently used language for the owner object
@@ -67,7 +67,7 @@ class Translatable extends CActiveRecordBehavior
         if(!in_array($name, $this->translationAttributes))
             return parent::__get($name);
 
-        if (!$this->muted) {
+        if (!$this->disableTranslationModel) {
             $model = $this->getTranslationModel();
             if(!empty($model->$name))
                 return $model->$name;
@@ -87,7 +87,7 @@ class Translatable extends CActiveRecordBehavior
      */
     public function __set($name, $value)
     {
-        if(in_array($name, $this->translationAttributes))
+        if(!$this->disableTranslationModel && in_array($name, $this->translationAttributes))
             $this->getTranslationModel()->$name = $value;
         else
             parent::__set($name, $value);
