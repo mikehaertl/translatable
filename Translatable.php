@@ -28,6 +28,11 @@ class Translatable extends CActiveRecordBehavior
      * @var array default columns in main table, indexed by attribute name. Used if no translation found.
      */
     public $fallbackColumns = array();
+    
+    /**
+     * @var boolean wheter the behavior should return translated attributes (default) or use the fallback
+     */
+    public $muted = false;
 
     /**
      * @var string the currently used language for the owner object
@@ -62,10 +67,11 @@ class Translatable extends CActiveRecordBehavior
         if(!in_array($name, $this->translationAttributes))
             return parent::__get($name);
 
-        $model = $this->getTranslationModel();
-
-        if(!empty($model->$name))
-            return $model->$name;
+        if (!$this->muted) {
+            $model = $this->getTranslationModel();
+            if(!empty($model->$name))
+                return $model->$name;
+        }
 
         if($this->_fbModel!==null && !empty($this->_fbModel->$name))
             return $this->_fbModel->$name;
